@@ -1,0 +1,70 @@
+//
+// Created by Matheus on 01/06/2026.
+//
+
+#ifndef ARESTA_H
+#define ARESTA_H
+#include "vertice.h"
+
+typedef void* Aresta;
+
+/// @brief Cria uma aresta com os atributos passados por parâmetro.
+/// @param i É o vértice onde está o início da aresta.
+/// @param j É o vértice onde está o fim da aresta.
+/// @param ldir String que informa o cep da quadra que está à direita da aresta.
+/// @param lesq String que informa o cep da quadra que está à esquerda da aresta.
+/// @param cmp Comprimento em metros do segmento de rua.
+/// @param vm Velocidade média que os carros trafegam neste segmento de rua (m/s).
+/// @param nome Nome da rua ao qual pertence o segmento.
+Aresta cria_aresta(Vertice i, Vertice j, char* ldir, char* lesq, double cmp, double vm, char* nome);
+
+/// @brief Define como o vértice de início da aresta.
+/// @param i É o ponteiro para o vértice de início da aresta, composto pelas coordenadas 'x' e 'y'.
+void set_vertice_i_aresta (Aresta a, Vertice i);
+
+/// @return Qual é o vértice de início da aresta.
+Vertice get_vertice_i_aresta (Aresta a);
+
+/// @brief Define como o vértice de fim da aresta.
+/// @param j É o ponteiro para o vértice de fim da aresta, composto pelas coordenadas 'x' e 'y'.
+void set_vertice_j_aresta (Aresta a, Vertice j);
+
+/// @return Qual é o vértice de fim da aresta.
+Vertice get_vertice_j_aresta (Aresta a);
+
+/// @brief Altera o valor que informa, através do cep, qual é a quadra que está localizada ao lado direito da rua.
+/// @param ldir É o cep da quadra que está à direita da aresta.
+void set_ldir_aresta (Aresta a, char* ldir);
+
+/// @return Qual é o cep da quadra que está à direita da rua.
+char* get_ldir_aresta (Aresta a);
+
+/// @brief Altera o valor que informa, através do cep, qual é a quadra que está localizada ao lado esquerdo da rua.
+/// @param lesq É o cep da quadra que está à esquerda da aresta.
+void set_lesq_aresta (Aresta a, char* lesq);
+
+/// @return Qual é o cep da quadra que está à esquerda da rua.
+void get_lesq_aresta (Aresta a);
+
+/// @brief Altera qual é o comprimento de uma rua, em metros.
+/// /// @param cmp É o comprimento da aresta.
+void set_cmp_aresta (Aresta a, double cmp);
+
+/// @return Qual é o comprimento da aresta.
+double get_cmp_aresta (Aresta a);
+
+/// @brief Altera qual é o valor da velocidade média, em metros por segundo, que os veículos demoram para percorrer essa quadra - da rua.
+/// @param vm É a velocidade média da aresta.
+void set_vm_aresta (Aresta a, double vm);
+
+/// @return Qual é a velocidade média da aresta.
+double get_vm_aresta (Aresta a);
+
+/// @brief Define a string passada por parâmetro como o nome da aresta.
+/// @param nome É o nome da aresta.
+void set_nome_aresta(Aresta a, char* nome);
+
+/// @return Qual é o nome da aresta.
+void get_nome_aresta (Aresta a);
+
+#endif ARESTA_H
