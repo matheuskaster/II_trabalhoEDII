@@ -104,3 +104,15 @@ void set_nome_aresta(Aresta a, char* nome) {
 char* get_nome_aresta (Aresta a) {
     return ((StrAresta*)a)->nome;
 }
+
+void libera_aresta (Aresta a) {
+    StrAresta* _a = (StrAresta*)a;
+    if (_a) {
+        libera_vertice(_a->i);
+        libera_vertice(_a->j);
+        free(_a->ldir);
+        free(_a->lesq);
+        free(_a->nome);
+        free(_a);
+    }
+}
