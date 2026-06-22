@@ -44,7 +44,7 @@ char* get_ldir_aresta (Aresta a);
 void set_lesq_aresta (Aresta a, char* lesq);
 
 /// @return Qual é o cep da quadra que está à esquerda da rua.
-void get_lesq_aresta (Aresta a);
+char* get_lesq_aresta (Aresta a);
 
 /// @brief Altera qual é o comprimento de uma rua, em metros.
 /// /// @param cmp É o comprimento da aresta.
@@ -65,7 +65,7 @@ double get_vm_aresta (Aresta a);
 void set_nome_aresta(Aresta a, char* nome);
 
 /// @return Qual é o nome da aresta.
-void get_nome_aresta (Aresta a);
+char* get_nome_aresta (Aresta a);
 
 /// @brief Libera toda a memória que estava reservada à aresta, disponibilizando-a novamente para outro uso.
 /// @param a É um ponteiro que aponta para a aresta que terá a sua memória liberada.
