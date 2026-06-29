@@ -72,4 +72,4 @@ char* get_nome_aresta (Aresta a);
 void libera_aresta (Aresta a);
 
 
-#endif ARESTA_H
+#endif
