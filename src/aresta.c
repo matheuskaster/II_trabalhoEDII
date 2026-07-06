@@ -10,8 +10,8 @@
 #include "../include/aresta.h"
 
 typedef struct {
-    Vertice i;
-    Vertice j;
+    char* i;
+    char* j;
     char* ldir;
     char* lesq;
     double cmp;
@@ -19,10 +19,22 @@ typedef struct {
     char* nome;
 } StrAresta;
 
-Aresta cria_aresta(Vertice i, Vertice j, char* ldir, char* lesq, double cmp, double vm, char* nome) {
+Aresta cria_aresta(char* i, char* j, char* ldir, char* lesq, double cmp, double vm, char* nome) {
     StrAresta* a = (StrAresta*)malloc(sizeof(StrAresta));
-    a->i = i;
-    a->j = j;
+    a->i = (char*) malloc(strlen(i)+1);
+    if (a->i == NULL) {
+        printf("Erro na alocação de memória para o id do vértice de início da aresta.");
+        exit(1);
+    }
+    strcpy(a->i, i);
+
+    a->j = (char*) malloc(strlen(j)+1);
+    if (a->j == NULL) {
+        printf("Erro na alocação de memória para o id do vértice de fim da aresta.");
+        exit(1);
+    }
+    strcpy(a->j, j);
+
     a->ldir = (char*) malloc(strlen(ldir)+1);
     if (a->ldir == NULL) {
         printf("Erro na alocação de memória para o cpf do lado direito da aresta.");
@@ -49,24 +61,24 @@ Aresta cria_aresta(Vertice i, Vertice j, char* ldir, char* lesq, double cmp, dou
     return (Aresta) a;
 }
 
-void set_vertice_i_aresta (Aresta a, Vertice i) {
-    ((StrAresta*)a)->i = i;
+void set_vertice_i_aresta (Aresta a, char* i) {
+    strcpy (((StrAresta*)a)->i, i);
 }
 
-Vertice get_vertice_i_aresta (Aresta a) {
+char* get_vertice_i_aresta (Aresta a) {
     return ((StrAresta*)a)->i;
 }
 
-void set_vertice_j_aresta (Aresta a, Vertice j) {
-    ((StrAresta*)a)->j = j;
+void set_vertice_j_aresta (Aresta a, char* j) {
+    strcpy (((StrAresta*)a)->j, j);
 }
 
-Vertice get_vertice_j_aresta (Aresta a) {
+char* get_vertice_j_aresta (Aresta a) {
     return ((StrAresta*)a)->j;
 }
 
 void set_ldir_aresta (Aresta a, char* ldir) {
-    ((StrAresta*)a)->ldir = ldir;
+    strcpy (((StrAresta*)a)->ldir, ldir);
 }
 
 char* get_ldir_aresta (Aresta a) {
@@ -74,7 +86,7 @@ char* get_ldir_aresta (Aresta a) {
 }
 
 void set_lesq_aresta (Aresta a, char* lesq) {
-    ((StrAresta*)a)->lesq = lesq;
+    strcpy (((StrAresta*)a)->lesq, lesq);
 }
 
 char* get_lesq_aresta (Aresta a) {
@@ -98,7 +110,7 @@ double get_vm_aresta (Aresta a) {
 }
 
 void set_nome_aresta(Aresta a, char* nome) {
-    ((StrAresta*)a)->nome = nome;
+    strcpy (((StrAresta*)a)->nome, nome);
 }
 
 char* get_nome_aresta (Aresta a) {
@@ -108,6 +120,8 @@ char* get_nome_aresta (Aresta a) {
 void libera_aresta (Aresta a) {
     StrAresta* _a = (StrAresta*)a;
     if (_a) {
+        free(_a->i);
+        free(_a->j);
         free(_a->ldir);
         free(_a->lesq);
         free(_a->nome);

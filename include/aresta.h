@@ -9,28 +9,28 @@
 typedef void* Aresta;
 
 /// @brief Cria uma aresta com os atributos passados por parâmetro.
-/// @param i É o vértice onde está o início da aresta.
-/// @param j É o vértice onde está o fim da aresta.
+/// @param i É uma string que contém o id do vértice onde está o início da aresta.
+/// @param j É uma string que contém o id do vértice onde está o fim da aresta.
 /// @param ldir String que informa o cep da quadra que está à direita da aresta.
 /// @param lesq String que informa o cep da quadra que está à esquerda da aresta.
 /// @param cmp Comprimento em metros do segmento de rua.
 /// @param vm Velocidade média que os carros trafegam neste segmento de rua (m/s).
 /// @param nome Nome da rua ao qual pertence o segmento.
-Aresta cria_aresta(Vertice i, Vertice j, char* ldir, char* lesq, double cmp, double vm, char* nome);
+Aresta cria_aresta(char* i, char* j, char* ldir, char* lesq, double cmp, double vm, char* nome);
 
 /// @brief Define como o vértice de início da aresta.
-/// @param i É o ponteiro para o vértice de início da aresta, composto pelas coordenadas 'x' e 'y'.
-void set_vertice_i_aresta (Aresta a, Vertice i);
+/// @param i É o ponteiro para a string do id do vértice de início da aresta, composto pelas coordenadas 'x' e 'y'.
+void set_vertice_i_aresta (Aresta a, char* i);
 
-/// @return Qual é o vértice de início da aresta.
-Vertice get_vertice_i_aresta (Aresta a);
+/// @return Qual é o id do vértice de início da aresta.
+char* get_vertice_i_aresta (Aresta a);
 
 /// @brief Define como o vértice de fim da aresta.
-/// @param j É o ponteiro para o vértice de fim da aresta, composto pelas coordenadas 'x' e 'y'.
-void set_vertice_j_aresta (Aresta a, Vertice j);
+/// @param j É o ponteiro para a string do id do vértice de fim da aresta, composto pelas coordenadas 'x' e 'y'.
+void set_vertice_j_aresta (Aresta a, char* j);
 
-/// @return Qual é o vértice de fim da aresta.
-Vertice get_vertice_j_aresta (Aresta a);
+/// @return Qual é o id do vértice de fim da aresta.
+char* get_vertice_j_aresta (Aresta a);
 
 /// @brief Altera o valor que informa, através do cep, qual é a quadra que está localizada ao lado direito da rua.
 /// @param ldir É o cep da quadra que está à direita da aresta.

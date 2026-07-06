@@ -38,11 +38,11 @@ void via (FILE* arq_via) {
                 break;
             }
             case 'e': {
-                int vertice_i, vertice_j;
+                char *vertice_i, *vertice_j;
                 char *ldir = NULL, *lesq = NULL, *nome = NULL;
                 double cmp = 0, vm = 0;
 
-                sscanf (linha, "e v%d v%d %s %s %lf %lf %s", &vertice_i, &vertice_j, ldir, lesq, &cmp, &vm, nome);
+                sscanf (linha, "e v%s v%s %s %s %lf %lf %s", &vertice_i, &vertice_j, ldir, lesq, &cmp, &vm, nome);
                 break;
             }
         }
