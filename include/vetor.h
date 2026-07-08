@@ -20,13 +20,14 @@ Vetor cria_vetor (int tamanho);
 /// @brief Insere um vértice no vetor.
 /// @param vetor É o ponteiro para o vetor de vértices.
 /// @param v É um ponteiro que aponta para o vértice que será inserido no vetor.
-void insere_vertice_vetor (Vetor vetor, Vertice v);
+/// @param indice É a posição que está disponível para inserir o próximo vértice.
+void insere_vertice_vetor (Vetor vetor, Vertice v, int indice);
 
 /// @brief Função que procura através do id único de cada vértice, o desejado.
 /// @param vetor É o ponteiro para o vetor de vértices.
-/// @param id É o id do vértice desejado.
+/// @param indice É o indice do vétor, no qual o vértice desejado se encontra.
 /// @return Retorna o vértice desejado.
-Vertice busca_vetor (Vetor vetor, int id);
+Vertice busca_vetor (Vetor vetor, int indice);
 
 /// @brief Libera toda a memória alocada pelo vetor de vértices, disponibilizando-a para uso.
 /// @param vetor É o ponteiro para saber qual vetor terá a sua memória liberada.

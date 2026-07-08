@@ -22,19 +22,18 @@ Vetor cria_vetor (int tamanho) {
     return vetor;
 }
 
-void insere_vetor (Vetor vetor, Vertice v) {
+void insere_vetor (Vetor vetor, Vertice v, int indice) {
     StrVetor* vet = (StrVetor*) vetor;
-    int id = get_id_vertice(v);
-    vet->vertices[id - 1] = v; // porque começa do 1 e não do zero
+    vet->vertices[indice] = v;
 }
 
-Vertice busca_vetor (Vetor vetor, int id) {
+Vertice busca_vetor (Vetor vetor, int indice) {
     StrVetor* vet = (StrVetor*) vetor;
-    if (id < 0 || id > vet->tam_vetor) {
+    if (indice < 0 || indice > vet->tam_vetor) {
         printf("[ERRO] tentativa de buscar, no vetor, um vértice inexistente");
         exit(1);
     }
-    Vertice v = vet->vertices[id - 1]; // porque começa do 1 e não do zero
+    Vertice v = vet->vertices[indice];
     return v;
 }
 

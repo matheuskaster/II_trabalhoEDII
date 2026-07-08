@@ -40,7 +40,7 @@ void via (FILE* arq_via) {
                 sscanf(linha, "v %s %lf %lf", id, &x, &y);
                 Vertice v = cria_vertice(id, x, y);
                 insere_mapa(mapa, id, contador);
-                insere_vertice_grafo(v, id, grafo);
+                insere_vertice_grafo(grafo, v, contador);
                 contador++;
                 break;
             }
