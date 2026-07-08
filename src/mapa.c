@@ -29,8 +29,8 @@ Mapa cria_mapa(int tamanho) {
         printf("[ERRO] Falha ao alocar memória para o Mapa.\n");
         exit(1);
     }
-
-    m->elementos = (StrElemento*) malloc(tamanho * sizeof(StrElemento));
+    m->tamanho = tamanho;
+    m->elementos = (StrElemento*) calloc(tamanho, sizeof(StrElemento));
     if (m->elementos == NULL) {
         printf("[ERRO] Falha ao alocar memória para o vetor dos elementos do Mapa.\n");
         exit(1);

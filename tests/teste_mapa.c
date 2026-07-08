@@ -18,7 +18,7 @@ void teste_criar_mapa(void) {
 }
 
 void teste_inserir_e_traduzir(void) {
-    Mapa m = cria_mapa(5);
+    Mapa m = cria_mapa(4);
 
     insere_mapa(m, "a", 0);
     insere_mapa(m, "c", 1);
@@ -29,9 +29,9 @@ void teste_inserir_e_traduzir(void) {
     ordena_mapa(m);
 
     TEST_ASSERT_EQUAL_INT(0, traduz_id(m, "a"));
-    TEST_ASSERT_EQUAL_INT(1, traduz_id(m, "b"));
-    TEST_ASSERT_EQUAL_INT(2, traduz_id(m, "c"));
-    TEST_ASSERT_EQUAL_INT(3, traduz_id(m, "d"));
+    TEST_ASSERT_EQUAL_INT(3, traduz_id(m, "b"));
+    TEST_ASSERT_EQUAL_INT(1, traduz_id(m, "c"));
+    TEST_ASSERT_EQUAL_INT(2, traduz_id(m, "d"));
 
 
     printf("Traduções realizadas e validadas com sucesso!\n");
@@ -39,7 +39,7 @@ void teste_inserir_e_traduzir(void) {
 }
 
 void teste_traduzir_id_inexistente(void) {
-    Mapa m = cria_mapa(5);
+    Mapa m = cria_mapa(1);
     insere_mapa(m, "cep1", 0);
     ordena_mapa(m);
 
