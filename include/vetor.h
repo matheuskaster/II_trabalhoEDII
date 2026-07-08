@@ -27,7 +27,7 @@ void insere_vertice_vetor (Vetor vetor, Vertice v, int indice);
 /// @param vetor É o ponteiro para o vetor de vértices.
 /// @param indice É o indice do vétor, no qual o vértice desejado se encontra.
 /// @return Retorna o vértice desejado.
-Vertice busca_vetor (Vetor vetor, int indice);
+Vertice busca_vertice_vetor (Vetor vetor, int indice);
 
 /// @brief Libera toda a memória alocada pelo vetor de vértices, disponibilizando-a para uso.
 /// @param vetor É o ponteiro para saber qual vetor terá a sua memória liberada.

@@ -27,7 +27,7 @@ void insere_vetor (Vetor vetor, Vertice v, int indice) {
     vet->vertices[indice] = v;
 }
 
-Vertice busca_vetor (Vetor vetor, int indice) {
+Vertice busca_vertice_vetor (Vetor vetor, int indice) {
     StrVetor* vet = (StrVetor*) vetor;
     if (indice < 0 || indice > vet->tam_vetor) {
         printf("[ERRO] tentativa de buscar, no vetor, um vértice inexistente");
