@@ -22,7 +22,7 @@ Vetor cria_vetor (int tamanho) {
     return vetor;
 }
 
-void insere_vetor (Vetor vetor, Vertice v, int indice) {
+void insere_vertice_vetor (Vetor vetor, Vertice v, int indice) {
     StrVetor* vet = (StrVetor*) vetor;
     vet->vertices[indice] = v;
 }

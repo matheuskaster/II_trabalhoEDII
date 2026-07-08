@@ -58,7 +58,7 @@ void define_velocidade_media(Grafo g, int indice_origem, int indice_destino, dou
     while (tem_proximo_lista(ruas_da_origem)) {
         Aresta rua = get_proximo_lista(ruas_da_origem);
 
-        if (get_vertice_j_aresta(rua) == get_id_vertice(vertice_destino_procurado) ) {
+        if ( strcmp(get_vertice_j_aresta(rua), get_id_vertice(vertice_destino_procurado)) == 0) {
             set_vm_aresta(rua, velocidade);
             break;
         }
@@ -74,7 +74,7 @@ bool eh_adjacente(Grafo g, int indice_origem, int indice_destino) {
     while (tem_proximo_lista(ruas_da_origem)) {
         Aresta rua = get_proximo_lista(ruas_da_origem);
 
-        if (get_vertice_j_aresta(rua) == get_id_vertice(vertice_destino_procurado) ) {
+        if ( strcmp(get_vertice_j_aresta(rua), get_id_vertice(vertice_destino_procurado)) == 0 ) {
             return true;
         }
     }
@@ -91,7 +91,7 @@ void remove_aresta(Grafo g, int indice_origem, int indice_destino) {
     while (tem_proximo_lista(ruas_da_origem)) {
         Aresta rua = get_proximo_lista(ruas_da_origem);
 
-        if (get_vertice_j_aresta(rua) == get_id_vertice(vertice_destino_procurado) ) {
+        if ( strcmp(get_vertice_j_aresta(rua), get_id_vertice(vertice_destino_procurado)) == 0) {
             remove_elemento_especifico_lista(ruas_da_origem, rua);
             libera_aresta(rua);
             break;
