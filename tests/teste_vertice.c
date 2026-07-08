@@ -9,51 +9,51 @@ void setUp (void) {}
 void tearDown (void) {}
 
 void teste_criar_vertice (void) {
-    Vertice v = cria_vertice(1, 2.0, 5.0);
-    int id = get_id_vertice(v);
+    Vertice v = cria_vertice("v1", 2.0, 5.0);
+    char* id = get_id_vertice(v);
     double x = get_x_vertice(v);
     double y = get_y_vertice(v);
 
-    printf("As informações do vértice são: id: %d, x: %.2lf, y: %.2lf", id, x, y);
+    printf("As informações do vértice são: id: %s, x: %.2lf, y: %.2lf", id, x, y);
     libera_vertice(v);
 }
 void teste_get_id_vertice (void) {
-    Vertice v = cria_vertice(1, 2.0, 5.0);
-    int id = get_id_vertice(v);
-    printf("O novo id do vértice é: %d", id);
+    Vertice v = cria_vertice("v1", 2.0, 5.0);
+    char* id = get_id_vertice(v);
+    printf("O novo id do vértice é: %s", id);
     libera_vertice(v);
 }
 void teste_get_x_vertice (void) {
-    Vertice v = cria_vertice(1, 2.0, 5.0);
+    Vertice v = cria_vertice("v1", 2.0, 5.0);
     double x = get_x_vertice(v);
-    printf("O novo x do vértice é: %lf", x);
+    printf("O novo x do vértice é: %.1lf", x);
     libera_vertice(v);
 }
 void teste_get_y_vertice (void) {
-    Vertice v = cria_vertice(1, 2.0, 5.0);
+    Vertice v = cria_vertice("v1", 2.0, 5.0);
     double y = get_y_vertice(v);
-    printf("O novo y do vértice é: %lf", y);
+    printf("O novo y do vértice é: %.1lf", y);
     libera_vertice(v);
 }
 void teste_set_id_vertice (void) {
-    Vertice v = cria_vertice(1, 2.0, 5.0);
-    set_id_vertice(v, 10);
-    int id = get_id_vertice(v);
-    printf("O novo id do vértice é: %d", id);
+    Vertice v = cria_vertice("v1", 2.0, 5.0);
+    set_id_vertice(v, "10");
+    char* id = get_id_vertice(v);
+    printf("O novo id do vértice é: %s", id);
     libera_vertice(v);
 }
 void teste_set_x_vertice (void) {
-    Vertice v = cria_vertice(1, 2.0, 5.0);
-    set_id_vertice(v, 10);
+    Vertice v = cria_vertice("v1", 2.0, 5.0);
+    set_x_vertice(v, 10);
     double x = get_x_vertice(v);
-    printf("O novo x do vértice é: %lf", x);
+    printf("O novo x do vértice é: %.2lf", x);
     libera_vertice(v);
 }
 void teste_set_y_vertice (void) {
-    Vertice v = cria_vertice(1, 2.0, 5.0);
-    set_id_vertice(v, 10);
+    Vertice v = cria_vertice("v1", 2.0, 5.0);
+    set_y_vertice(v, 10);
     double y = get_y_vertice(v);
-    printf("O novo y do vértice é: %lf", y);
+    printf("O novo y do vértice é: %.2lf", y);
     libera_vertice(v);
 }
 

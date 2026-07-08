@@ -11,14 +11,14 @@ typedef void* Vertice;
 /// @param id É o identificador do vértice, único para cada vértice.
 /// @param x É a coordenada no eixo 'x', em que o vértice do segmento de rua se encontrará, no plano cartesiano.
 /// @param y É a coordenada no eixo 'y', em que o vértice do segmento de rua se encontrará, no plano cartesiano.
-Vertice cria_vertice (int id, double x, double y);
+Vertice cria_vertice (char* id, double x, double y);
 
 /// @brief Define a string passada por parâmetro como o identificador o vértice.
-/// @param id Número inteiro, identificador específico do vértice.
-void set_id_vertice(Vertice v, int id);
+/// @param id String identificadora específica do vértice.
+void set_id_vertice(Vertice v, char* id);
 
 /// @return Qual é o identificador específico do ponto passado por parâmetro.
-int get_id_vertice(Vertice v);
+char* get_id_vertice(Vertice v);
 
 /// @brief Altera o valor do 'x' do ponto.
 /// @param x É a coordenada no eixo 'x', em que o vértice do segmento de rua se encontrará, no plano cartesiano.

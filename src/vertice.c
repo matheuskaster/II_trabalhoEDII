@@ -4,27 +4,35 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../include/vertice.h"
 
 typedef struct {
-    int id;
+    char* id;
     double x;
     double y;
 } StrVertice;
 
-Vertice cria_vertice(int id, double x, double y) {
+Vertice cria_vertice(char* id, double x, double y) {
     StrVertice* v = (StrVertice*) malloc(sizeof(StrVertice));
-    v->id = id;
+
+    v->id = (char*) malloc(strlen(id)+1);
+    if (v->id == NULL) {
+        printf("[ERRO] falha na alocação de memória para o id do vértice.");
+        exit(1);
+    }
+    strcpy(v->id, id);
+
     v->x = x;
     v->y = y;
     return (Vertice) v;
 }
 
-void set_id_vertice(Vertice v, int id) {
-    ((StrVertice*)v)->id = id;
+void set_id_vertice(Vertice v, char* id) {
+    strcpy (((StrVertice*)v)->id, id);
 }
 
-int get_id_vertice(Vertice v) {
+char* get_id_vertice(Vertice v) {
     return ((StrVertice*)v)->id;
 }
 

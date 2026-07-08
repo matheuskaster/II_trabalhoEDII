@@ -4,7 +4,6 @@
 
 #ifndef ARESTA_H
 #define ARESTA_H
-#include "vertice.h"
 
 typedef void* Aresta;
 
