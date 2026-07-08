@@ -53,7 +53,11 @@ double get_y_vertice(Vertice v) {
 }
 
 void libera_vertice(Vertice v) {
-    if (v) {
-        free(v);
+    StrVertice* vertice = (StrVertice*) v;
+    if (vertice != NULL) {
+        if (vertice->id != NULL) {
+            free(vertice->id);
+        }
+        free(vertice);
     }
 }
