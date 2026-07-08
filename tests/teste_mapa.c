@@ -20,18 +20,18 @@ void teste_criar_mapa(void) {
 void teste_inserir_e_traduzir(void) {
     Mapa m = cria_mapa(5);
 
-    insere_mapa(m, "v2", 0);
-    insere_mapa(m, "v4", 1);
-    insere_mapa(m, "v1", 3);
-    insere_mapa(m, "v3", 4);
+    insere_mapa(m, "a", 0);
+    insere_mapa(m, "c", 1);
+    insere_mapa(m, "d", 2);
+    insere_mapa(m, "b", 3);
 
 
     ordena_mapa(m);
 
-    TEST_ASSERT_EQUAL_INT(0, traduz_id(m, "v1"));
-    TEST_ASSERT_EQUAL_INT(1, traduz_id(m, "v2"));
-    TEST_ASSERT_EQUAL_INT(2, traduz_id(m, "v3"));
-    TEST_ASSERT_EQUAL_INT(3, traduz_id(m, "v4"));
+    TEST_ASSERT_EQUAL_INT(0, traduz_id(m, "a"));
+    TEST_ASSERT_EQUAL_INT(1, traduz_id(m, "b"));
+    TEST_ASSERT_EQUAL_INT(2, traduz_id(m, "c"));
+    TEST_ASSERT_EQUAL_INT(3, traduz_id(m, "d"));
 
 
     printf("Traduções realizadas e validadas com sucesso!\n");
