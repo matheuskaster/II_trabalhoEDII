@@ -6,7 +6,7 @@
 #define GRAFO_H
 
 #include <stdbool.h>
-
+#include "../include/vertice.h"
 #include "../include/aresta.h"
 #include "../include/lista.h"
 
@@ -17,26 +17,34 @@ typedef void* Grafo;
 /// @return O ponteiro que aponta para o grafo.
 Grafo cria_grafo(int tamanho);
 
+/// @brief Função que adiciona o vértice, no vetor, que é parte da estrutura do grafo.
+/// @param v É o ponteiro para o vértice que será adicionado ao grafo.
+/// @param indice É a posição que o vértice será inserido no grafo.
+void insere_vertice_grafo(Grafo g, Vertice v, int indice);
+
 /// @brief Verifica se ambos, os vértices i e j, pertencem ao conjunto de vértices, caso eles façam parte,
 /// é adicionado uma aresta direcionada que os conecta, no sentido (i,j), ou seja, inicia no i e termina no j.
 /// Caso contrário ela só retorna antes de fazer o procedimento.
-void insere_aresta(Vertice i, Vertice j, Grafo g);
+void insere_aresta_grafo(Grafo g, Aresta a, int indice_i);
 
 /// Verifica se a aresta (i,j) pertence ao grafo, se sim, essa aresta é acessada, e é alterada a sua informação.
 /// Altera a velocidade média com que os carros que trafegam por essa rua
 /// Caso contrário a função só retorna antes de fazer o procedimento.
-void define_velocidade_media(Vertice i, Vertice j, Grafo g, double velocidade);
+void define_velocidade_media(Grafo g, int indice_i, int indice_j, double velocidade);
 
 /// Verifica se a aresta (i,j) pertence ao grafo, se sim, ela deixa de fazer parte do conjunto de arestas do grafo.
 /// Caso contrário a função só retorna antes de fazer o procedimento.
-void remove_aresta(Vertice i, Vertice j, Grafo g);
+void remove_aresta(Grafo g, int indice_i, int indice_j);
 
 /// Recebe dois vértices e verifica se existe uma aresta do grafo que os conecta, se sim retorna "true".
 /// @return "true", se a aresta existe. "false", se ela não existe.
-bool eh_adjacente(Vertice i, Vertice j, Grafo g);
+bool eh_adjacente(Grafo g, int indice_i, int indice_j);
 
 /// Dado um vértice, é retornado a lista de adjacência.
 /// @return O ponteiro para a lista.
-Lista adjacentes(Vertice v, Grafo g);
+Lista adjacentes(Grafo g, int indice_vertice);
+
+/// @brief Libera toda a memória que estava reservada para o gravo, disponibilizando-a novamente para uso.
+void libera_grafo(Grafo g);
 
 #endif
