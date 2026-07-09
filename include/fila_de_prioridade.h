@@ -19,6 +19,12 @@ int tam_fila_prioridade(FilaPrioridade f);
 /// @brief Verifica se a fila está vazia.
 bool esta_vazia_fila_prioridade(FilaPrioridade f);
 
+/// @brief Verifica se um determinado vértice já está na fila de prioridade.
+/// @param f O ponteiro para a fila de prioridade.
+/// @param id_vertice O índice numérico do vértice buscado.
+/// @return 'true' se ele estiver na fila, 'false' caso contrário.
+bool contem_fila_prioridade(FilaPrioridade f, int id_vertice);
+
 /// @brief Insere um vértice na fila associando-o a um peso (prioridade).
 /// @param f O ponteiro para a fila de prioridade.
 /// @param id_vertice O índice numérico do vértice.
