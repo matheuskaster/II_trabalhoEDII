@@ -57,12 +57,30 @@ void teste_diminuir_prioridade(void) {
     libera_fila_prioridade(f);
 }
 
+void teste_contem_e_busca_fila(void) {
+    FilaPrioridade f = cria_fila_prioridade(5);
+
+    TEST_ASSERT_FALSE(contem_fila_prioridade(f, 3));
+
+    insere_fila_prioridade(f, 3, 25.5);
+    TEST_ASSERT_TRUE(contem_fila_prioridade(f, 3));
+
+    TEST_ASSERT_FALSE(contem_fila_prioridade(f, 2));
+
+    int menor = extrai_minimo(f);
+    TEST_ASSERT_EQUAL_INT(3, menor);
+    TEST_ASSERT_FALSE(contem_fila_prioridade(f, 3));
+
+    libera_fila_prioridade(f);
+}
+
 int main() {
     UNITY_BEGIN();
 
     RUN_TEST(teste_criar_e_liberar_fila);
     RUN_TEST(teste_propriedade_min_heap);
     RUN_TEST(teste_diminuir_prioridade);
+    RUN_TEST(teste_contem_e_busca_fila);
 
     return UNITY_END();
 }
