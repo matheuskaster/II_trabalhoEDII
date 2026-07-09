@@ -16,6 +16,7 @@ void via (FILE* arq_via) {
         exit(1);
     }
 
+    bool ordenado = false;
     int contador = 0;
 
     int tamanho = 0;
@@ -45,6 +46,10 @@ void via (FILE* arq_via) {
                 break;
             }
             case 'e': {
+                if (!ordenado) {
+                    ordena_mapa(mapa);
+                    ordenado = true;
+                }
                 char *vertice_i = NULL, *vertice_j = NULL;
                 char *ldir = NULL, *lesq = NULL, *nome = NULL;
                 double cmp = 0, vm = 0;
@@ -58,5 +63,4 @@ void via (FILE* arq_via) {
             }
         }
     }
-    ordena_mapa(mapa);
 }
