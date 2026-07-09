@@ -13,9 +13,13 @@ void setUp(void) {}
 void tearDown(void) {}
 
 void teste_criar_grafo(void) {
-    Grafo g = cria_grafo(10);
+    Grafo g = cria_grafo(1);
+
+    Vertice v = cria_vertice("v", 10.0, 10.0);
+    insere_vertice_grafo(g, v, 0);
+
     TEST_ASSERT_NOT_NULL(g);
-    printf("Grafo criado (e módulos internos alocados) com sucesso!\n");
+    printf("\nGrafo criado (e módulos internos alocados) com sucesso!\n");
     libera_grafo(g);
 }
 
@@ -28,7 +32,7 @@ void teste_inserir_vertice_e_aresta(void) {
     insere_vertice_grafo(g, v1, 0);
     insere_vertice_grafo(g, v2, 1);
 
-    Aresta rua = cria_aresta(v1, v2, "cepD", "cepE", 100.0, 60.0, "Rua Teste");
+    Aresta rua = cria_aresta("v1", "v2", "cepD", "cepE", 100.0, 60.0, "Rua Teste");
 
     insere_aresta_grafo(g, rua, 0);
 
@@ -36,7 +40,7 @@ void teste_inserir_vertice_e_aresta(void) {
 
     TEST_ASSERT_FALSE(eh_adjacente(g, 1, 0));
 
-    printf("Vértices e Arestas inseridos e validados corretamente!\n");
+    printf("\nVértices e Arestas inseridos e validados corretamente!\n");
 
     // A função libera_grafo vai apagar o vetor, os vértices nele, as listas, e as arestas dentro das listas
     libera_grafo(g);
@@ -50,12 +54,12 @@ void teste_alterar_velocidade(void) {
     insere_vertice_grafo(g, v1, 0);
     insere_vertice_grafo(g, v2, 1);
 
-    Aresta rua = cria_aresta(v1, v2, "D", "E", 100.0, 40.0, "Rua Lenta");
+    Aresta rua = cria_aresta("v1", "v2", "D", "E", 100.0, 40.0, "Rua Lenta");
     insere_aresta_grafo(g, rua, 0);
 
     define_velocidade_media(g, 0, 1, 80.0);
 
-    // Dijkstra futuramente. Assumo que não deu segmentation fault.
+    printf("\nA velocidade média da aresta agora é: %.1lf\n", get_vm_aresta(rua));
     TEST_ASSERT_TRUE(true);
 
     libera_grafo(g);
