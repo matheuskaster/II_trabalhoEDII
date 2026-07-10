@@ -28,7 +28,7 @@ void setUp(void) {
 
     a14 = cria_aresta(v1, v4, "cep dir-14", "cep esq-14", 50.0, 40, "Rua do aço");
     a12 = cria_aresta(v1, v2, "cep dir-14", "cep esq-14", 50.0, 30, "Rua do cobre");
-    a23 = cria_aresta(v2, v2, "cep dir-14", "cep esq-14", 50.0, 50, "Rua do rubi");
+    a23 = cria_aresta(v2, v3, "cep dir-14", "cep esq-14", 50.0, 50, "Rua do rubi");
     a34 = cria_aresta(v3, v4, "cep dir-14", "cep esq-14", 50.0, 60, "Rua do ouro");
 
     insere_vertice_grafo(g, v1, 0);
@@ -41,7 +41,7 @@ void tearDown(void) {
     libera_grafo(g);
 }
 
-void teste_dijkstra_encontra_caminho_mais_barato(void) {
+void teste_dijkstra_encontra_menor_caminho(void) {
 
     // Caminho direto de v1(0) para v4(3) custa 100
     insere_aresta_grafo(g, a14, 100.0);
@@ -51,7 +51,7 @@ void teste_dijkstra_encontra_caminho_mais_barato(void) {
     insere_aresta_grafo(g, a34, 20.0);
 
     // 3. Executando o Dijkstra (saindo de v1=0, querendo chegar em v4=3)
-    CaminhoMinimo cm = calcula_caminho_dijkstra(g, 0, 3);
+    CaminhoMinimo cm = calcula_caminho_dijkstra(g, 0, 3, DISTANCIA);
 
     // Garante que é possível chegar no destino
     TEST_ASSERT_TRUE(caminho_eh_alcancavel(cm));
@@ -63,13 +63,10 @@ void teste_dijkstra_encontra_caminho_mais_barato(void) {
     TEST_ASSERT_EQUAL_INT(4, get_tamanho_caminho(cm));
 
     // Garante que a ordem dos cruzamentos na rota está perfeita
-    TEST_ASSERT_EQUAL_STRING("id v1", get_vertice_caminho(cm, 0));
-    TEST_ASSERT_EQUAL_STRING("id v2", get_vertice_caminho(cm, 1));
-    TEST_ASSERT_EQUAL_STRING("id v3", get_vertice_caminho(cm, 2));
-    TEST_ASSERT_EQUAL_STRING("id v4", get_vertice_caminho(cm, 3));
-
-    // 5. Limpando a memória
-    libera_caminho_minimo(cm);
+    TEST_ASSERT_EQUAL_INT(0, get_vertice_caminho(cm, 0));
+    TEST_ASSERT_EQUAL_INT(1, get_vertice_caminho(cm, 1));
+    TEST_ASSERT_EQUAL_INT(2, get_vertice_caminho(cm, 2));
+    TEST_ASSERT_EQUAL_INT(3, get_vertice_caminho(cm, 3));
 }
 void teste_dijkstra_destino_inalcancavel(void) {
     CaminhoMinimo cm = calcula_caminho_dijkstra(g, 0, 3);
@@ -82,7 +79,7 @@ void teste_dijkstra_destino_inalcancavel(void) {
 
 int main() {
     UNITY_BEGIN();
-    RUN_TEST(teste_dijkstra_encontra_caminho_mais_barato);
+    RUN_TEST(teste_dijkstra_encontra_menor_caminho);
     RUN_TEST(teste_dijkstra_destino_inalcancavel);
     return UNITY_END();
 }
