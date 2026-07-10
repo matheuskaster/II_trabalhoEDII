@@ -44,7 +44,7 @@ Grafo cria_grafo(int tamanho) {
     return g;
 }
 
-Mapa get_mapa(Grafo g) {
+Mapa get_mapa_grafo(Grafo g) {
     return ((StrGrafo*) g)->mapa;
 }
 
