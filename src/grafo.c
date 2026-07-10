@@ -55,6 +55,7 @@ int get_num_vertices(Grafo g) {
 void insere_vertice_grafo(Grafo g, Vertice v, int indice) {
     StrGrafo* grafo = (StrGrafo*) g;
     insere_vertice_vetor(grafo->vertices, v, indice);
+    insere_mapa(grafo->mapa, get_id_vertice(v), indice);
 }
 
 void insere_aresta_grafo(Grafo g, Aresta a, int indice_origem) {
