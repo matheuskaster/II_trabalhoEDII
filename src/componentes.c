@@ -18,6 +18,9 @@ typedef struct {
 // DFS - Busca em Profundidade
 void dfs_visita(Grafo g, int u, int cor, int* vetor_componentes, Mapa mapa) {
 
+    if (vetor_componentes == NULL) {
+        return;
+    }
     vetor_componentes[u] = cor;
 
     Lista lista_arestas = adjacentes(g, u);
