@@ -11,8 +11,9 @@ typedef void* Componentes;
 
 /* MÓDULO COMPONENTES (conexos)
 Esse modulo visa montar um vetor de inteiros, com o mesmo tamanho do Vetor de vértices. O jeito que ele faz para "colorir"
-o grafo é colocar o mesmo inteiro nas posições que são da mesma ilha. Ou seja, cada posição (índice) representa um vértice
-no Vetor, de verdade, por isso quando dois índices do int* tem o mesmo número, esses dois vértices, estão conectados.
+o grafo é colocar o mesmo inteiro nas posições que são da mesma ilha, começa com 0, quando acaba esses componentes, incrementa.
+Ou seja, cada posição (índice) representa um vérticeno Vetor, de verdade, por isso quando dois índices do int* tem o mesmo
+número, esses dois vértices, estão conectados.
 */
 
 /// @brief Executa a busca em profundidade, que depois de escolher um caminho, vai o mais profundo possível nesse caminho
