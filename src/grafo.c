@@ -8,8 +8,10 @@
 #include <string.h>
 # include "../include/grafo.h"
 # include "../include/vetor.h"
+# include "../include/mapa.h"
 
 typedef struct {
+    Mapa mapa;
     Vetor vertices;
     Lista* listas_adjacencia;
     int num_vertices;
@@ -23,6 +25,12 @@ Grafo cria_grafo(int tamanho) {
     }
     g->num_vertices = tamanho;
 
+    g->mapa = cria_mapa(tamanho);
+    if (g->mapa == NULL) {
+        printf("[ERRO] falha ao criar a estrutura que mapeia os vértices, do grafo. \n");
+        exit(1);
+    }
+
     g->vertices = cria_vetor(tamanho);
     if (g->vertices == NULL) {
         printf("[ERRO] falha ao criar o vetor de vértices, do grafo. \n");
@@ -34,6 +42,14 @@ Grafo cria_grafo(int tamanho) {
         g->listas_adjacencia[i] = cria_lista();
     }
     return g;
+}
+
+Mapa get_mapa(Grafo g) {
+    return ((StrGrafo*) g)->mapa;
+}
+
+int get_num_vertices(Grafo g) {
+    return ((StrGrafo*)g)->num_vertices;
 }
 
 void insere_vertice_grafo(Grafo g, Vertice v, int indice) {
@@ -111,6 +127,7 @@ void libera_grafo(Grafo g) {
     StrGrafo* grafo = (StrGrafo*) g;
     if (grafo == NULL) return;
 
+    libera_mapa(grafo);
     libera_vetor(grafo->vertices);
 
     for (int i = 0; i < grafo->num_vertices; i++) {

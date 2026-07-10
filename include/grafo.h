@@ -6,6 +6,8 @@
 #define GRAFO_H
 
 #include <stdbool.h>
+
+#include "../include/mapa.h"
 #include "../include/vertice.h"
 #include "../include/aresta.h"
 #include "../include/lista.h"
@@ -16,6 +18,12 @@ typedef void* Grafo;
 /// @param tamanho Número inteiro que indica quantos vértices terá o grafo criado.
 /// @return O ponteiro que aponta para o grafo.
 Grafo cria_grafo(int tamanho);
+
+///@return O ponteiro para o mapa, que mapeia a posição dos vértices no vetor.
+Mapa get_mapa_grafo(Grafo g);
+
+/// @return Qual é a quantidade de vértices que o grafo possui.
+int get_num_vertices(Grafo g);
 
 /// @brief Função que adiciona o vértice, no vetor, que é parte da estrutura do grafo.
 /// @param v É o ponteiro para o vértice que será adicionado ao grafo.

@@ -27,7 +27,7 @@ void via (FILE* arq_via) {
     sscanf(linha, "%d", &tamanho);
 
     Grafo grafo = cria_grafo(tamanho);
-    Mapa mapa = cria_mapa(tamanho);
+    Mapa mapa = get_mapa_grafo(grafo);
 
     while (fgets(linha, sizeof(linha), arq_via) != NULL) {
         if (linha[0] == '\n' || linha[0] == '#'){
