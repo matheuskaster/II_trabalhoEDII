@@ -67,9 +67,7 @@ CaminhoMinimo calcula_caminho_dijkstra(Grafo g, int id_origem, int id_destino, p
 
                 Aresta aresta_atual = (Aresta) get_proximo_lista(lista_arestas);
 
-                Vertice destino = get_vertice_j_aresta(aresta_atual);
-
-                char* id_string = get_id_vertice(destino);
+                char* id_string = get_vertice_j_aresta(aresta_atual);
 
                 int v = traduz_id(mapa, id_string);
 
