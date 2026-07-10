@@ -127,7 +127,7 @@ void libera_grafo(Grafo g) {
     StrGrafo* grafo = (StrGrafo*) g;
     if (grafo == NULL) return;
 
-    libera_mapa(grafo);
+    libera_mapa(grafo->mapa);
     libera_vetor(grafo->vertices);
 
     for (int i = 0; i < grafo->num_vertices; i++) {
