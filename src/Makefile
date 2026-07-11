@@ -11,7 +11,7 @@ OBJETOS   := $(SOURCES:.c=.o)
 # --- Variáveis para o Teste ---
 TEST_EXEC := ../executavel/rodar_testes
 UNITY_SRC := ../unity/unity.c
-SRC_TESTE := ../tests/teste_dijkstra.c ../src/dijkstra.c ../src/fila_de_prioridade.c ../src/grafo.c ../src/vertice.c ../src/aresta.c ../src/vetor.c ../src/mapa.c ../src/lista.c
+SRC_TESTE := ../tests/teste_registrador.c ../src/registrador.c
 
 	# Módulos para colocar no SRC_TESTE para fazer rodar:
 		# Vertice: ../tests/teste_vertice.c ../src/vertice.c
@@ -21,6 +21,9 @@ SRC_TESTE := ../tests/teste_dijkstra.c ../src/dijkstra.c ../src/fila_de_priorida
 		# Grafo: ../tests/teste_grafo.c ../src/grafo.c ../src/vertice.c ../src/aresta.c ../src/vetor.c ../src/lista.c
 		# Fila: ../tests/teste_fila_de_prioridade.c ../src/fila_de_prioridade.c
 		# Dijkstra: ../tests/teste_dijkstra.c ../src/dijkstra.c ../src/fila_de_prioridade.c ../src/grafo.c ../src/vertice.c ../src/aresta.c ../src/mapa.c ../src/lista.c
+		# Componentes: ../tests/teste_componentes.c ../src/componentes.c ../src/grafo.c ../src/vertice.c ../src/vetor.c ../src/aresta.c ../src/mapa.c ../src/lista.c
+		# Árvore: ../tests/teste_arvore_geradora.c ../src/arvore_geradora.c ../src/grafo.c ../src/vertice.c ../src/vetor.c ../src/aresta.c ../src/mapa.c ../src/lista.c ../src/fila_de_prioridade.c
+		# Registrador: ../tests/teste_registrador.c ../src/registrador.c
 # ------------------------------
 
 # Regras de compilação:

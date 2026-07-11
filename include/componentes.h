@@ -24,7 +24,8 @@ Componentes calcula_componentes_conexos(Grafo g);
 int get_quantidade_componentes(Componentes cc);
 
 /// @brief Retorna a "cor" do componente, a ilha que ele pertence, o número dele.
-int get_vertice_componente(Componentes cc, int id_vertice_numerico);
+/// @param indice_vertice Recebe é o vértice de interesse (posição do vértice)
+int get_vertice_componente(Componentes cc, int indice_vertice);
 
 /// @brief Libera toda a memória alocada para o cálculo dos componentes, disponibilizando-a novamente para uso.
 void libera_componentes(Componentes cc);

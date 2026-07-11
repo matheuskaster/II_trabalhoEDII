@@ -28,7 +28,7 @@ void insere_registrador(Registradores r, char* id_reg, double x, double y);
 /// @param id_reg String com o nome do registrador (ex: "R0").
 /// @param x Recebe, por referência na função, o valor do 'x', que estava no registrador.
 /// @param y Recebe, por referência na função, o valor do 'y', que estava no registrador.
-void busca_registrador (Registradores r, char* id_reg, double* x, double* y);
+void busca_registrador(Registradores r, char* id_reg, double* x, double* y);
 
 /// @brief Libera toda a memória que estava reservada para os registradores, disponibilizando-a novamente para uso.
 /// @param r É o ponteiro para a estrutura terá a sua memória liberada.
