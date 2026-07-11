@@ -17,6 +17,25 @@ typedef struct {
     int* pai;
 } StrArvore;
 
+// Esimular o Grafo Não Direcionado internamente.
+typedef struct no_adj {
+    int v;
+    double peso;
+    struct no_adj* prox;
+} NoAdj;
+
+static void libera_adj_nd(NoAdj** adj_nd, int num_vertices) {
+    for (int i = 0; i < num_vertices; i++) {
+        NoAdj* atual = adj_nd[i];
+        while (atual != NULL) {
+            NoAdj* prox = atual->prox;
+            free(atual);
+            atual = prox;
+        }
+    }
+    free(adj_nd);
+}
+
 Arvore calcula_arvore_geradora(Grafo g) {
     int num_vertices = get_num_vertices(g);
 
@@ -34,6 +53,36 @@ Arvore calcula_arvore_geradora(Grafo g) {
 
     FilaPrioridade fila = cria_fila_prioridade(num_vertices);
 
+    NoAdj** adj_nd = (NoAdj**) calloc(num_vertices, sizeof(NoAdj*));
+    Mapa mapa = get_mapa_grafo(g);
+
+    for (int u = 0; u < num_vertices; u++) {
+        Lista lista_arestas = adjacentes(g, u);
+        if (lista_arestas != NULL) {
+            percorrer_do_inicio_lista(lista_arestas);
+            while (tem_proximo_lista(lista_arestas)) {
+                Aresta aresta_atual = (Aresta) get_proximo_lista(lista_arestas);
+
+                int v = traduz_id(mapa, get_vertice_j_aresta(aresta_atual));
+                double peso = get_cmp_aresta(aresta_atual);
+
+                // Adiciona aresta de ida (u -> v)
+                NoAdj* novo_ida = (NoAdj*) malloc(sizeof(NoAdj));
+                novo_ida->v = v;
+                novo_ida->peso = peso;
+                novo_ida->prox = adj_nd[u];
+                adj_nd[u] = novo_ida;
+
+                // Adiciona aresta de volta (v -> u) garantindo o não-direcionamento
+                NoAdj* novo_volta = (NoAdj*) malloc(sizeof(NoAdj));
+                novo_volta->v = u;
+                novo_volta->peso = peso;
+                novo_volta->prox = adj_nd[v];
+                adj_nd[v] = novo_volta;
+            }
+        }
+    }
+
     for (int i = 0; i < num_vertices; i++) {
         arvore->pai[i] = -1;
         custos[i] = DBL_MAX;
@@ -47,8 +96,6 @@ Arvore calcula_arvore_geradora(Grafo g) {
         }
     }
 
-    Mapa mapa = get_mapa_grafo(g);
-
     while (!esta_vazia_fila_prioridade(fila)) {
 
         int u = extrai_minimo(fila);
@@ -60,31 +107,24 @@ Arvore calcula_arvore_geradora(Grafo g) {
 
         visitados[u] = true;
 
-        Lista lista_arestas = adjacentes(g, u);
+        NoAdj* atual = adj_nd[u];
+        while (atual != NULL) {
+            int v = atual->v;
+            double peso_aresta = atual->peso;
 
-        if (lista_arestas != NULL) {
-            percorrer_do_inicio_lista(lista_arestas);
-            while (tem_proximo_lista(lista_arestas)) {
+            if (!visitados[v] && peso_aresta < custos[v]) {
+                custos[v] = peso_aresta;
+                arvore->pai[v] = u;
 
-                Aresta aresta_atual = (Aresta) get_proximo_lista(lista_arestas);
-
-                char* id_string = get_vertice_j_aresta(aresta_atual);
-                int v = traduz_id(mapa, id_string);
-
-                double peso_aresta = get_cmp_aresta(aresta_atual);
-
-                if (!visitados[v] && peso_aresta < custos[v]) {
-                    custos[v] = peso_aresta;
-                    arvore->pai[v] = u;
-
-                    diminui_prioridade(fila, v, custos[v]);
-                }
+                diminui_prioridade(fila, v, custos[v]);
             }
+            atual = atual->prox;
         }
     }
     free(custos);
     free(visitados);
     libera_fila_prioridade(fila);
+    libera_adj_nd(adj_nd, num_vertices);
 
     return arvore;
 }
