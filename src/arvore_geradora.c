@@ -53,9 +53,9 @@ Arvore calcula_arvore_geradora(Grafo g) {
 
         int u = extrai_minimo(fila);
 
-        // Segurança, vê se existe uma ilha, que não faz parte do vértice arbitrário.
+        // Ao invés de calcular só uma ilha, ele as junta em um grafo só.
         if (custos[u] == DBL_MAX) {
-            break;
+            custos[u] = 0.0;
         }
 
         visitados[u] = true;

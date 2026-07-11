@@ -16,7 +16,8 @@ typedef void* Arvore;
 /* MÓDULO ÁRVORE GERADORA MÍNIMA
 Módulo que calcula o melhor jeito de conectar todos os vértices do grafo, com o menor custo.
 Escolhido o algoritmo de Prim, pois é mostrado no slide do professor que é parecido com o Dikstra, que era obrigatório.
-Já que ambos utilizam pais, custos e visitados.
+Já que ambos utilizam pais, custos e visitados. Caso hajam ilhas desconexas, ele ignora e pega o subgrafo que permite
+chegar em todos os vértices do grafo (cidade).
 Vou simular um grafo não direcionado, fazendo ele duplamente direcionado.
 Resumo: Esse algoritmo começa por um vértice arbitrário, e verifica quem é a aresta de menor peso saindo de um vértice
 pertencente. Continua até conectar todos os vértices, sempre observando quem é a de menor peso, que mantém conectada e
