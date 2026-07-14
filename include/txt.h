@@ -19,6 +19,6 @@ void reporta_qtd_componentes_txt(FILE* file_txt, int qtd, double vl);
 void reporta_destino_inacessivel_txt(FILE* file_txt, char* reg1, char* reg2);
 
 /// @brief Reporta a descrição textual do trajeto.
-void reporta_descricao_caminho_txt(FILE* file_txt, Grafo g, Mapa mapa, CaminhoMinimo cm, char* tipo);
+void reporta_descricao_caminho_txt(FILE* file_txt, Grafo g, CaminhoMinimo cm, char* tipo);
 
 #endif
