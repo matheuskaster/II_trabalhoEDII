@@ -52,6 +52,10 @@ bool eh_adjacente(Grafo g, int indice_i, int indice_j);
 /// @return O ponteiro para a lista.
 Lista adjacentes(Grafo g, int indice_vertice);
 
+/// @brief Função que rebece o vértice de início e de fim de uma aresta.
+/// @return Qual é a aresta que conecta esses vértices.
+Aresta acha_aresta_pelos_indices(Grafo g, int u, int v);
+
 /// @brief Libera toda a memória que estava reservada para o gravo, disponibilizando-a novamente para uso.
 void libera_grafo(Grafo g);
 

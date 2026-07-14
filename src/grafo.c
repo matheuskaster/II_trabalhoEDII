@@ -124,6 +124,23 @@ Lista adjacentes(Grafo g, int indice_vertice) {
     return NULL;
 }
 
+Aresta acha_aresta_pelos_indices(Grafo g, int u, int v) {
+    StrGrafo* grafo = (StrGrafo*) g;
+    Mapa mapa = get_mapa_grafo(grafo);
+    Lista adj = adjacentes(grafo, u);
+    if (adj == NULL) return NULL;
+
+    percorrer_do_inicio_lista(adj);
+    while (tem_proximo_lista(adj)) {
+        Aresta a = get_proximo_lista(adj);
+        int dest = traduz_id(mapa, get_vertice_j_aresta(a));
+        if (dest == v) {
+            return a;
+        }
+    }
+    return NULL;
+}
+
 void libera_grafo(Grafo g) {
     StrGrafo* grafo = (StrGrafo*) g;
     if (grafo == NULL) return;
