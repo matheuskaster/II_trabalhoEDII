@@ -73,6 +73,7 @@ void o(Gerenciador quadras, Registradores r, char* reg, char* cep, char face, in
 
     reporta_coordenada_txt(file_txt, reg, cep, face, num, px, py);
     desenha_linha_registrador_svg(file_svg, px, py, reg);
+    libera_quadra(q);
 }
 
 void mvm(Grafo g, double v, double x, double y, double w, double h) {
