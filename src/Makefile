@@ -5,8 +5,10 @@ CC        := gcc
 CFLAGS    := -W -Wall -Wextra -ggdb -std=c99 -fstack-protector-all
 LIBS      := -lm
 
+OBJ_DIR   := obj
+
 SOURCES   := $(wildcard *.c)
-OBJETOS   := $(SOURCES:.c=.o)
+OBJETOS   := $(patsubst %.c, $(OBJ_DIR)/%.o, $(SOURCES))
 
 # --- Variáveis para o Teste ---
 TEST_EXEC := ../executavel/rodar_testes
@@ -34,13 +36,14 @@ $(PROJ_NAME): $(OBJETOS)
 	@$(CC) -o $@ $^ $(LIBS)
 	@echo "✓ Build completo!"
 
-%.o: %.c
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(OBJ_DIR)
 	@echo "Compilando $<..."
 	@$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
 	@echo "Limpando arquivos..."
-	@rm -f *.o $(PROJ_NAME)
+	@rm -rf $(OBJ_DIR) $(PROJ_NAME)
 	@echo "✓ Limpeza concluída!"
 
 # --- Regra para Rodar os Testes ---
