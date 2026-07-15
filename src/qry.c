@@ -5,12 +5,16 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "../include/qry.h"
+#include "registrador.h"
 #include "../include/hash.h"
 #include "../include/grafo.h"
-#include "../include/qry.h"
 #include "../include/svg.h"
+#include "../include/mobilidade.h"
 
 void qry (Gerenciador quadras, Grafo grafo, FILE* file_qry, FILE* file_txt, FILE* file_svg, Cores cq) {
+
+    Registradores r = cria_registradores();
 
     char linha[512];
     char comando[6];
@@ -30,12 +34,12 @@ void qry (Gerenciador quadras, Grafo grafo, FILE* file_qry, FILE* file_txt, FILE
             char face = '\0';
             int num;
             sscanf(linha, "%s %s %c %d", reg, cep, &face, &num);
-            o(reg, cep, face, num, file_svg, file_txt);
+            o(quadras, r, reg, cep, face, num, file_svg, file_txt);
         }
         else if (strcmp(comando, "mvm") == 0) {
             double v = 0.0, x = 0.0, y = 0.0, w = 0.0, h = 0.0;
             sscanf(linha, "%lf %lf %lf %lf %lf", &v, &x, &y, &w, &h);
-            mvm(grafo, x, y, w, h);
+            mvm(grafo, v, x, y, w, h);
         }
         else if (strcmp(comando, "regs") == 0) {
             double vl = 0.0;
@@ -45,7 +49,7 @@ void qry (Gerenciador quadras, Grafo grafo, FILE* file_qry, FILE* file_txt, FILE
         else if (strcmp(comando, "exp") == 0) {
             double vl = 0.0;
             sscanf(linha, "%lf", &vl);
-            exp(grafo, vl, file_svg);
+            expande(grafo, vl, file_svg);
         }
         else if (strcmp(comando, "p?") == 0) {
             char *reg1 = NULL, *reg2 = NULL, *cc = NULL, *cr = NULL;
@@ -67,5 +71,6 @@ void qry (Gerenciador quadras, Grafo grafo, FILE* file_qry, FILE* file_txt, FILE
         libera_quadra(q);
     }
     free(vetor_quadras);
+    libera_registradores(r);
     fecha_svg(file_svg);
 }
