@@ -9,7 +9,7 @@
 #include "../include/grafo.h"
 #include "../include/mapa.h"
 
-void via (FILE* arq_via) {
+Grafo via (FILE* arq_via) {
 
     if(arq_via == NULL){
         printf("Arquivo .via não encontrado. \n");

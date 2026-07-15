@@ -2,13 +2,13 @@
 // Created by Matheus on 25/05/2026.
 //
 
-#include <stdlib.h>
-#include <string.h>
 #include "../include/geo.h"
 #include "../include/svg.h"
 #include "../include/quadra.h"
+#include <stdlib.h>
+#include <string.h>
 
-void geo (Gerenciador quadras, FILE* arq_geo, FILE* arq_svg) {
+void geo (Gerenciador quadras, FILE* arq_geo, FILE* arq_svg, Cores cq) {
 
     if(arq_geo == NULL){
         printf("Arquivo .geo não encontrado. \n");
@@ -17,7 +17,6 @@ void geo (Gerenciador quadras, FILE* arq_geo, FILE* arq_svg) {
 
     char linha[256];
     char comando[3];
-    Cores cq = NULL;
 
     abre_svg(arq_svg);
 
@@ -30,10 +29,6 @@ void geo (Gerenciador quadras, FILE* arq_geo, FILE* arq_svg) {
         if (strcmp(comando, "q") == 0) {
             char cep[16];
             double x, y, w, h;
-            if (cq == NULL) {
-                //settando cores padroes, pois não foi informado quais sao as cores desejadas.
-                cq = cria_cores( "1.0px", "steelblue" , "MistyRose");
-            }
             sscanf (linha, "q %s %lf %lf %lf %lf", cep, &x, &y, &w, &h);
             Quadra q = cria_quadra(cep, x, y, w, h);
             desenha_quadra_svg(arq_svg, q, cq);
@@ -59,6 +54,5 @@ void geo (Gerenciador quadras, FILE* arq_geo, FILE* arq_svg) {
             }
         }
     }
-    libera_cores(cq);
     fecha_svg(arq_svg);
 }

@@ -4,8 +4,8 @@
 
 #ifndef GEO_H
 #define GEO_H
-
 #include <stdio.h>
+
 #include "hash.h"
 #include "quadra.h"
 
@@ -15,9 +15,10 @@ informacoes necessarias para a criacao e ilustracao de uma quadra, cada uma dela
 de dados localizada atraves do gerenciador.
 */
 
-///@param quadras Estrutura que tem acesso a todas as informacoes para alterar os atributos das quadras.
-///@param arq_geo Ponteiro do tipo arquivo, para acessar as informacoes das quadras.
-///@param arq_svg Ponteiro do tipo arquivo, para poder desenhar as quadras.
-void geo (Gerenciador quadras, FILE* arq_geo, FILE* arq_svg);
+/// @param quadras Estrutura que tem acesso a todas as informacoes para alterar os atributos das quadras.
+/// @param arq_geo Ponteiro do tipo arquivo, para acessar as informacoes das quadras.
+/// @param arq_svg Ponteiro do tipo arquivo, para poder desenhar as quadras.
+/// @param cq Ponteiro para a estrutura que guarda as cores da quadra.
+void geo (Gerenciador quadras, FILE* arq_geo, FILE* arq_svg, Cores cq);
 
 #endif
