@@ -199,6 +199,9 @@ void expande(Grafo g, double vl, FILE* file_svg) {
 void p(Grafo g, Registradores r, char* reg1, char* reg2, char* cc, char* cr, FILE* file_svg, FILE* file_txt) {
     double x1, y1, x2, y2;
 
+    busca_registrador(r, reg1, &x1, &y1);
+    busca_registrador(r, reg2, &x2, &y2);
+
     int u_origem = encontra_vertice_mais_proximo(g, x1, y1);
     int u_destino = encontra_vertice_mais_proximo(g, x2, y2);
 
