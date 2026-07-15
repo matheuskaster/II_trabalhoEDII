@@ -219,6 +219,7 @@ void p(Grafo g, Registradores r, Mapa mapa, char* reg1, char* reg2, char* cc, ch
     reporta_descricao_caminho_txt(file_txt, g, cm_rapido, "mais rápido");
 
     desenha_caminho_svg(file_svg, g, cm_curto, cc);
+    desenha_caminho_svg(file_svg, g, cm_rapido, cr);
 
     Vertice v_ini = busca_vertice_vetor(g, u_origem);
     Vertice v_fim = busca_vertice_vetor(g, u_destino);
