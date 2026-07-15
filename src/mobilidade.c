@@ -176,7 +176,7 @@ void expande(Grafo g, double vl, FILE* file_svg) {
         if (pai != -1) {
             // Checa a via original de ambos os lados (já que o grafo é direcionado)
             Aresta e_ida = acha_aresta_pelos_indices(g, pai, i);
-            Aresta e_volta = acha_aresta_pelos_indices(g, pai, i);
+            Aresta e_volta = acha_aresta_pelos_indices(g, i, pai);
 
             Aresta a = (e_ida != NULL) ? e_ida : e_volta;
             if (a != NULL) {
