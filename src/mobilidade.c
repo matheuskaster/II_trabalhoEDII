@@ -170,7 +170,6 @@ void regs(Grafo g, double vl, FILE* file_svg, FILE* file_txt) {
 void expande(Grafo g, double vl, FILE* file_svg) {
     Arvore arvore_geradora_minima = calcula_arvore_geradora(g);
     int num_vertices = get_tamanho_arvore(arvore_geradora_minima);
-    Mapa mapa = get_mapa_grafo(g);
 
     for (int i = 0; i < num_vertices; i++) {
         int pai = get_pai_vertice_arvore(arvore_geradora_minima, i);
