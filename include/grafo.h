@@ -7,6 +7,7 @@
 
 #include <stdbool.h>
 
+#include "vetor.h"
 #include "../include/mapa.h"
 #include "../include/vertice.h"
 #include "../include/aresta.h"
@@ -19,8 +20,11 @@ typedef void* Grafo;
 /// @return O ponteiro que aponta para o grafo.
 Grafo cria_grafo(int tamanho);
 
-///@return O ponteiro para o mapa, que mapeia a posição dos vértices no vetor.
+/// @return O ponteiro para o mapa, que mapeia a posição dos vértices no vetor.
 Mapa get_mapa_grafo(Grafo g);
+
+/// @return O ponteiro para o vetor de vértices.
+Vetor get_vetor_grafo(Grafo g);
 
 /// @return Qual é a quantidade de vértices que o grafo possui.
 int get_num_vertices(Grafo g);

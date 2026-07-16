@@ -48,6 +48,10 @@ Mapa get_mapa_grafo(Grafo g) {
     return ((StrGrafo*) g)->mapa;
 }
 
+Vetor get_vetor_grafo(Grafo g) {
+    return ((StrGrafo*) g)->vertices;
+}
+
 int get_num_vertices(Grafo g) {
     return ((StrGrafo*)g)->num_vertices;
 }

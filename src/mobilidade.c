@@ -32,8 +32,10 @@ static int encontra_vertice_mais_proximo(Grafo g, double target_x, double target
     int indice_mais_proximo = -1;
     double min_dist = DBL_MAX;
 
+    Vetor vet = get_vetor_grafo(g);
+
     for (int i = 0; i < num_vertices; i++) {
-        Vertice v = busca_vertice_vetor(g, i);
+        Vertice v = busca_vertice_vetor(vet, i);
         double x = get_x_vertice(v);
         double y = get_y_vertice(v);
 
@@ -79,6 +81,7 @@ void o(Gerenciador quadras, Registradores r, char* reg, char* cep, char face, in
 void mvm(Grafo g, double v, double x, double y, double w, double h) {
     int num_vertices = get_num_vertices(g);
     Mapa mapa = get_mapa_grafo(g);
+    Vetor vet = get_vetor_grafo(g);
 
     for (int u = 0; u < num_vertices; u++) {
         Lista adj = adjacentes(g, u);
@@ -89,8 +92,8 @@ void mvm(Grafo g, double v, double x, double y, double w, double h) {
             Aresta a = (Aresta) get_proximo_lista(adj);
             int dest_index = traduz_id(mapa, get_vertice_j_aresta(a));
 
-            Vertice v_origem = busca_vertice_vetor(g, u);
-            Vertice v_destino = busca_vertice_vetor(g, dest_index);
+            Vertice v_origem = busca_vertice_vetor(vet, u);
+            Vertice v_destino = busca_vertice_vetor(vet, dest_index);
 
             double ox = get_x_vertice(v_origem);
             double oy = get_y_vertice(v_origem);
@@ -107,6 +110,7 @@ void mvm(Grafo g, double v, double x, double y, double w, double h) {
 void regs(Grafo g, double vl, FILE* file_svg, FILE* file_txt) {
     int num_vertices = get_num_vertices(g);
     Mapa mapa = get_mapa_grafo(g);
+    Vetor vet = get_vetor_grafo(g);
     bool* visitados = (bool*) calloc(num_vertices, sizeof(bool));
     int componentes_cont = 0;
 
@@ -124,7 +128,7 @@ void regs(Grafo g, double vl, FILE* file_svg, FILE* file_txt) {
 
             while (inicio < fim) {
                 int u = fila[inicio++];
-                Vertice vert = busca_vertice_vetor(g, u);
+                Vertice vert = busca_vertice_vetor(vet, u);
                 double ux = get_x_vertice(vert);
                 double uy = get_y_vertice(vert);
 
@@ -170,6 +174,7 @@ void regs(Grafo g, double vl, FILE* file_svg, FILE* file_txt) {
 void expande(Grafo g, double vl, FILE* file_svg) {
     Arvore arvore_geradora_minima = calcula_arvore_geradora(g);
     int num_vertices = get_tamanho_arvore(arvore_geradora_minima);
+    Vetor vet = get_vetor_grafo(g);
 
     for (int i = 0; i < num_vertices; i++) {
         int pai = get_pai_vertice_arvore(arvore_geradora_minima, i);
@@ -185,8 +190,8 @@ void expande(Grafo g, double vl, FILE* file_svg) {
                     if (e_ida != NULL)   set_vm_aresta(e_ida, vm * 1.5);
                     if (e_volta != NULL) set_vm_aresta(e_volta, vm * 1.5);
 
-                    Vertice v_pai = busca_vertice_vetor(g, pai);
-                    Vertice v_filho = busca_vertice_vetor(g, i);
+                    Vertice v_pai = busca_vertice_vetor(vet, pai);
+                    Vertice v_filho = busca_vertice_vetor(vet, i);
 
                     desenha_aresta_arvore_svg(file_svg, get_x_vertice(v_pai), get_y_vertice(v_pai), get_x_vertice(v_filho), get_y_vertice(v_filho));
                 }
@@ -198,6 +203,7 @@ void expande(Grafo g, double vl, FILE* file_svg) {
 
 void p(Grafo g, Registradores r, char* reg1, char* reg2, char* cc, char* cr, FILE* file_svg, FILE* file_txt) {
     double x1, y1, x2, y2;
+    Vetor vet = get_vetor_grafo(g);
 
     busca_registrador(r, reg1, &x1, &y1);
     busca_registrador(r, reg2, &x2, &y2);
@@ -221,8 +227,8 @@ void p(Grafo g, Registradores r, char* reg1, char* reg2, char* cc, char* cr, FIL
     desenha_caminho_svg(file_svg, g, cm_curto, cc);
     desenha_caminho_svg(file_svg, g, cm_rapido, cr);
 
-    Vertice v_ini = busca_vertice_vetor(g, u_origem);
-    Vertice v_fim = busca_vertice_vetor(g, u_destino);
+    Vertice v_ini = busca_vertice_vetor(vet, u_origem);
+    Vertice v_fim = busca_vertice_vetor(vet, u_destino);
     desenha_placa_svg(file_svg, get_x_vertice(v_ini), get_y_vertice(v_ini), 'I', "green");
     desenha_placa_svg(file_svg, get_x_vertice(v_fim), get_y_vertice(v_fim), 'F', "red");
 
