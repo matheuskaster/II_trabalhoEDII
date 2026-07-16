@@ -34,7 +34,6 @@ void qry (Gerenciador quadras, Grafo grafo, FILE* file_qry, FILE* file_txt, FILE
             char face = '\0';
             int num;
             sscanf(linha, "@o? %s %s %c %d", reg, cep, &face, &num);
-            printf("%s %s %c %d\n", reg, cep, face, num);
             o(quadras, r, reg, cep, face, num, file_svg, file_txt);
         }
         else if (strcmp(comando, "mvm") == 0) {
@@ -73,5 +72,6 @@ void qry (Gerenciador quadras, Grafo grafo, FILE* file_qry, FILE* file_txt, FILE
     }
     free(vetor_quadras);
     libera_registradores(r);
+    libera_grafo(grafo);
     fecha_svg(file_svg);
 }
