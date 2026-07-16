@@ -62,4 +62,5 @@ Grafo via (FILE* arq_via) {
             }
         }
     }
+    return grafo;
 }
