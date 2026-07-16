@@ -39,6 +39,6 @@ void expande(Grafo g, double vl, FILE* file_svg);
 /// Desenha os percursos (mais curto, mais rápido) com as cores cc e cr, respectivamente.
 /// TXT: descrição textual do percurso. Caso destino inacessível, reporta.
 /// SVG: mostra os percursos pintados e animados. Marca os extremos do percurso com “placas” com as letras I e F.
-void p(Grafo g, char* reg1, char* reg2, char* cc, char* cr, FILE* file_svg, FILE* file_txt);
+void p(Grafo g, Registradores r, char* reg1, char* reg2, char* cc, char* cr, FILE* file_svg, FILE* file_txt);
 
 #endif
