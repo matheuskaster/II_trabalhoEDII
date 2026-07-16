@@ -30,30 +30,31 @@ void qry (Gerenciador quadras, Grafo grafo, FILE* file_qry, FILE* file_txt, FILE
 
         if (strcmp(comando, "@o?") == 0) {
             char reg[128];
-            char cep[10];
+            char cep[64];
             char face = '\0';
             int num;
-            sscanf(linha, "%s %s %c %d", reg, cep, &face, &num);
+            sscanf(linha, "@o? %s %s %c %d", reg, cep, &face, &num);
+            printf("%s %s %c %d\n", reg, cep, face, num);
             o(quadras, r, reg, cep, face, num, file_svg, file_txt);
         }
         else if (strcmp(comando, "mvm") == 0) {
             double v = 0.0, x = 0.0, y = 0.0, w = 0.0, h = 0.0;
-            sscanf(linha, "%lf %lf %lf %lf %lf", &v, &x, &y, &w, &h);
+            sscanf(linha, "mvm %lf %lf %lf %lf %lf", &v, &x, &y, &w, &h);
             mvm(grafo, v, x, y, w, h);
         }
         else if (strcmp(comando, "regs") == 0) {
             double vl = 0.0;
-            sscanf(linha, "%lf", &vl);
+            sscanf(linha, "regs %lf", &vl);
             regs(grafo, vl, file_svg, file_txt);
         }
         else if (strcmp(comando, "exp") == 0) {
             double vl = 0.0;
-            sscanf(linha, "%lf", &vl);
+            sscanf(linha, "exp %lf", &vl);
             expande(grafo, vl, file_svg);
         }
         else if (strcmp(comando, "p?") == 0) {
             char reg1[4], reg2[4], cc[16], cr[16];
-            sscanf(linha, "%s %s %s %s", reg1, reg2, cc, cr);
+            sscanf(linha, "p? %s %s %s %s", reg1, reg2, cc, cr);
             p(grafo, r, reg1, reg2, cc, cr, file_svg, file_txt);
         }
     }
