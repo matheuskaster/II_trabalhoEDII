@@ -36,7 +36,7 @@ Grafo via (FILE* arq_via) {
         sscanf(linha, "%s", comando);
         switch (comando[0]) {
             case 'v': {
-                char* id = NULL;
+                char id[64];
                 double x, y;
                 sscanf(linha, "v %s %lf %lf", id, &x, &y);
                 Vertice v = cria_vertice(id, x, y);
@@ -49,8 +49,8 @@ Grafo via (FILE* arq_via) {
                     ordena_mapa(mapa);
                     ordenado = true;
                 }
-                char *vertice_i = NULL, *vertice_j = NULL;
-                char *ldir = NULL, *lesq = NULL, *nome = NULL;
+                char vertice_i[64], vertice_j[64];
+                char ldir[64], lesq[64], nome[64];
                 double cmp = 0, vm = 0;
 
                 sscanf (linha, "e %s %s %s %s %lf %lf %s", vertice_i, vertice_j, ldir, lesq, &cmp, &vm, nome);
