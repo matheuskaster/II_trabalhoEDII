@@ -6,7 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "../include/qry.h"
-#include "registrador.h"
+#include "../include/registrador.h"
 #include "../include/hash.h"
 #include "../include/grafo.h"
 #include "../include/svg.h"
