@@ -26,23 +26,23 @@ void desenha_quadra_svg (FILE* arq_svg, Quadra q, Cores cq) {
 
 void desenha_linha_registrador_svg(FILE* arq_svg, double x, double y, char* reg) {
     if (arq_svg == NULL || reg == NULL) return;
-    fprintf(arq_svg, "\t<line x1=\"%.2f\" y1=\"%.2f\" x2=\"%.2f\" y2=\"12.00\" stroke=\"red\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" />\n", x, y, x);
-    fprintf(arq_svg, "\t<text x=\"%.2f\" y=\"10.00\" fill=\"red\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" text-anchor=\"middle\">%s</text>\n", x, reg);
+    fprintf(arq_svg, "\t<line x1=\"%.2f\" y1=\"%.2f\" x2=\"%.2f\" y2=\"7.20\" stroke=\"red\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" />\n", 0.6*x, 0.6*y, 0.6*x);
+    fprintf(arq_svg, "\t<text x=\"%.2f\" y=\"6.00\" fill=\"red\" font-size=\"10\" font-family=\"sans-serif\" font-weight=\"bold\" text-anchor=\"middle\">%s</text>\n", 0.6*x, reg);
 }
 
 void desenha_aresta_svg(FILE* arq_svg, double xi, double yi, double xj, double yj) {
     if (arq_svg == NULL) return;
-    fprintf(arq_svg, "<line x1=\"%lf\" y1=\"%lf\" x2=\"%lf\" y2=\"%lf\" stroke=\"gray\" stroke-width=\"1.0\" />\n", xi, yi, xj, yj);
+    fprintf(arq_svg, "<line x1=\"%lf\" y1=\"%lf\" x2=\"%lf\" y2=\"%lf\" stroke=\"gray\" stroke-width=\"1.0\" />\n", 0.6*xi, 0.6*yi, 0.6*xj, 0.6*yj);
 }
 
 void desenha_bounding_box_svg(FILE* arq_svg, double x, double y, double w, double h, char* cb) {
     if (arq_svg == NULL || cb == NULL) return;
-    fprintf(arq_svg, "<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" stroke=\"%s\" fill=\"%s\" opacity=\"0.5\" stroke-width=\"1.5\" />\n", x, y, w, h, cb, cb);
+    fprintf(arq_svg, "<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" stroke=\"%s\" fill=\"%s\" opacity=\"0.5\" stroke-width=\"1.5\" />\n", 0.6*x, 0.6*y, 0.6*w, 0.6*h, cb, cb);
 }
 
 void desenha_aresta_arvore_svg(FILE* arq_svg, double xi, double yi, double xj, double yj) {
     if (arq_svg == NULL) return;
-    fprintf(arq_svg, "<line x1=\"%lf\" y1=\"%lf\" x2=\"%lf\" y2=\"%lf\" stroke=\"red\" stroke-width=\"4.0\" />\n", xi, yi, xj, yj);
+    fprintf(arq_svg, "<line x1=\"%lf\" y1=\"%lf\" x2=\"%lf\" y2=\"%lf\" stroke=\"red\" stroke-width=\"4.0\" />\n", 0.6*xi, 0.6*yi, 0.6*xj, 0.6*yj);
 }
 
 void desenha_caminho_svg(FILE* arq_svg, Grafo g, CaminhoMinimo caminho, char* cc) {
@@ -56,13 +56,13 @@ void desenha_caminho_svg(FILE* arq_svg, Grafo g, CaminhoMinimo caminho, char* cc
     int indice = get_vertice_caminho(caminho, 0);
     Vertice v_origem = busca_vertice_vetor(g, indice);
 
-    fprintf(arq_svg, "\t<path id=\"rota%d\" d=\"M %.2f %.2f ", id_atual, get_x_vertice(v_origem), get_y_vertice(v_origem));
+    fprintf(arq_svg, "\t<path id=\"rota%d\" d=\"M %.2f %.2f ", id_atual, 0.6*get_x_vertice(v_origem), 0.6*get_y_vertice(v_origem));
 
     for (int i = 1; i < tamanho; i++) {
         int u = get_vertice_caminho(caminho, i);
         Vertice destino = busca_vertice_vetor(g, u);
         if (destino != NULL) {
-            fprintf(arq_svg, "L %.2f %.2f ", get_x_vertice(destino), get_y_vertice(destino));
+            fprintf(arq_svg, "L %.2f %.2f ", 0.6*get_x_vertice(destino), 0.6*get_y_vertice(destino));
         }
     }
 
