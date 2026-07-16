@@ -52,8 +52,10 @@ Grafo via (FILE* arq_via) {
                 char vertice_i[64], vertice_j[64];
                 char ldir[64], lesq[64], nome[64];
                 double cmp = 0, vm = 0;
-
                 sscanf (linha, "e %s %s %s %s %lf %lf %s", vertice_i, vertice_j, ldir, lesq, &cmp, &vm, nome);
+                Aresta a = cria_aresta(vertice_i, vertice_j, ldir, lesq, cmp, vm, nome);
+                int i = traduz_id(mapa, vertice_i);
+                insere_aresta_grafo(grafo, a, i);
                 break;
             }
             default: {
