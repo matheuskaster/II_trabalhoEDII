@@ -47,6 +47,7 @@ void desenha_aresta_arvore_svg(FILE* arq_svg, double xi, double yi, double xj, d
 
 void desenha_caminho_svg(FILE* arq_svg, Grafo g, CaminhoMinimo caminho, char* cc) {
     if (arq_svg == NULL || g == NULL || caminho == NULL || cc == NULL) return;
+    Vetor vet = get_vetor_grafo(g);
     int tamanho = get_tamanho_caminho(caminho);
     if (tamanho == 0) return;
 
@@ -54,13 +55,13 @@ void desenha_caminho_svg(FILE* arq_svg, Grafo g, CaminhoMinimo caminho, char* cc
     int id_atual = id_rota++;
 
     int indice = get_vertice_caminho(caminho, 0);
-    Vertice v_origem = busca_vertice_vetor(g, indice);
+    Vertice v_origem = busca_vertice_vetor(vet, indice);
 
     fprintf(arq_svg, "\t<path id=\"rota%d\" d=\"M %.2f %.2f ", id_atual, 0.6*get_x_vertice(v_origem), 0.6*get_y_vertice(v_origem));
 
     for (int i = 1; i < tamanho; i++) {
         int u = get_vertice_caminho(caminho, i);
-        Vertice destino = busca_vertice_vetor(g, u);
+        Vertice destino = busca_vertice_vetor(vet, u);
         if (destino != NULL) {
             fprintf(arq_svg, "L %.2f %.2f ", 0.6*get_x_vertice(destino), 0.6*get_y_vertice(destino));
         }
@@ -73,8 +74,8 @@ void desenha_caminho_svg(FILE* arq_svg, Grafo g, CaminhoMinimo caminho, char* cc
 
 void desenha_placa_svg(FILE* arq_svg, double x, double y, char letra, char* cp) {
     if (arq_svg == NULL || cp == NULL) return;
-    fprintf(arq_svg, "\t<rect x=\"%lf\" y=\"%lf\" width=\"16\" height=\"16\" stroke=\"black\" fill=\"%s\" stroke-width=\"1\" />\n", x - 8.0, y - 8.0, cp);
-    fprintf(arq_svg, "\t<text x=\"%lf\" y=\"%lf\" font-size=\"11\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"white\" >%c</text>\n", x, y, letra);
+    fprintf(arq_svg, "\t<rect x=\"%lf\" y=\"%lf\" width=\"16\" height=\"16\" stroke=\"black\" fill=\"%s\" stroke-width=\"1\" />\n", 0.6*(x - 8.0), 0.6*(y - 8.0), cp);
+    fprintf(arq_svg, "\t<text x=\"%lf\" y=\"%lf\" font-size=\"11\" font-weight=\"bold\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"white\" >%c</text>\n", 0.6*x, 0.6*y, letra);
 }
 
 void fecha_svg(FILE* arq_svg) {
