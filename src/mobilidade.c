@@ -61,8 +61,8 @@ void o(Gerenciador quadras, Registradores r, char* reg, char* cep, char face, in
     double w = get_w_quadra(q);
     double h = get_h_quadra(q);
 
-    double px = x;
-    double py = y;
+    double px;
+    double py;
 
     switch (face) {
         case 'N': case 'n': px = x + num; py = y + h; break;
