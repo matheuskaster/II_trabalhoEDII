@@ -140,7 +140,7 @@ int main(int argc, char *argv[]) {
     fclose(file_geo);
     fclose(file_svg_geo);
     fclose(file_via);
-
+    libera_cores(cq);
     if (file_qry)     fclose(file_qry);
     if (file_svg_qry) fclose(file_svg_qry);
     if (file_txt)     fclose(file_txt);
