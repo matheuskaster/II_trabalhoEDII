@@ -5,8 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include "grafo.h"
+#include "../include/grafo.h"
 #include "../include/path_utils.h"
 #include "../include/geo.h"
 #include "../include/via.h"
