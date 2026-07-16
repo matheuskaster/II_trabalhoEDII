@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include "quadra.h"
 #include "hash.h"
+#include "grafo.h"
 
 /// @brief É uma função feita para poder ler o arquivo de entrada qry e chamar funções que irão executar os comandos.
 /// @param quadras É o gerenciador que tem acesso e controle ao hashfile, referente às quadras, do programa.
