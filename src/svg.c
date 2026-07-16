@@ -4,9 +4,9 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "svg.h"
-#include "grafo.h"
-#include "vetor.h"
+#include "../include/svg.h"
+#include "../include/grafo.h"
+#include "../include/vetor.h"
 
 void abre_svg (FILE* arq_svg) {
 
