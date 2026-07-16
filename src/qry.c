@@ -54,20 +54,20 @@ void qry (Gerenciador quadras, Grafo grafo, FILE* file_qry, FILE* file_txt, FILE
         else if (strcmp(comando, "p?") == 0) {
             char *reg1 = NULL, *reg2 = NULL, *cc = NULL, *cr = NULL;
             sscanf(linha, "%s %s %s %s", reg1, reg2, cc, cr);
-            p(grafo, reg1, reg2, cc, cr, file_svg, file_txt);
+            p(grafo, r, reg1, reg2, cc, cr, file_svg, file_txt);
         }
     }
     int total;
     Registro* vetor_quadras = pega_todos_registros(quadras, &total);
     for (int i = 0; i < total; i++) {
-        Registro r = vetor_quadras[i];
+        Registro registro = vetor_quadras[i];
 
-        char* cep = get_chave_registro(r);
-        char* dados = get_dados_registro(r);
+        char* cep = get_chave_registro(registro);
+        char* dados = get_dados_registro(registro);
         Quadra q = reconstroi_quadra(cep, dados);
         desenha_quadra_svg(file_svg, q, cq);
 
-        libera_registro(r);
+        libera_registro(registro);
         libera_quadra(q);
     }
     free(vetor_quadras);
