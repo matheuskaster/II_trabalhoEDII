@@ -29,7 +29,7 @@ void qry (Gerenciador quadras, Grafo grafo, FILE* file_qry, FILE* file_txt, FILE
         sscanf(linha, "%s", comando);
 
         if (strcmp(comando, "@o?") == 0) {
-            char* reg = NULL;
+            char reg[128];
             char cep[10];
             char face = '\0';
             int num;
@@ -52,7 +52,7 @@ void qry (Gerenciador quadras, Grafo grafo, FILE* file_qry, FILE* file_txt, FILE
             expande(grafo, vl, file_svg);
         }
         else if (strcmp(comando, "p?") == 0) {
-            char *reg1 = NULL, *reg2 = NULL, *cc = NULL, *cr = NULL;
+            char reg1[4], reg2[4], cc[16], cr[16];
             sscanf(linha, "%s %s %s %s", reg1, reg2, cc, cr);
             p(grafo, r, reg1, reg2, cc, cr, file_svg, file_txt);
         }
